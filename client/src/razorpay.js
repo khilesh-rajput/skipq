@@ -1,0 +1,1 @@
+export function loadRazorpay(){return new Promise((resolve,reject)=>{if(window.Razorpay)return resolve(true);const s=document.createElement('script');s.src='https://checkout.razorpay.com/v1/checkout.js';s.onload=()=>resolve(true);s.onerror=()=>reject(Error('Could not load Razorpay checkout'));document.body.appendChild(s);});}

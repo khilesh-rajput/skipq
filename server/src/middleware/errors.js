@@ -1,0 +1,2 @@
+export function notFound(_q,_s,n){n(Object.assign(Error('Endpoint not found'),{status:404}));}
+export function errors(e,_q,s,_n){const status=e.status||(e.name==='ZodError'?400:e.code==='ER_DUP_ENTRY'?409:e.type==='entity.parse.failed'?400:500);if(status>=500)console.error(e.message);s.status(status).json({ok:false,error:status>=500&&process.env.NODE_ENV==='production'?'Internal server error':e.name==='ZodError'?'Invalid request data':e.message});}
